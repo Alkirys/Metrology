@@ -29,7 +29,11 @@ const arr = [
     9.0069,
     9.0038,
     9.0054
-]
+];
+const T = 2.045229642132703;
+const first = [];
+const second = [];
+let newArr = [];
 
 const getAVG = (mass) => {
     return mass.reduce((a,b) => {
@@ -37,11 +41,22 @@ const getAVG = (mass) => {
     })/mass.length;
 }
 
-console.log(document.getElementById('myChart'))
+arr.forEach((item,index) => {
+    if (index < arr.length/2) {
+        first.push(item)
+    } else {
+        second.push(item);
+    }
+})
+first.sort();
+second.sort().reverse();
 
-// Vertical bar chart
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+newArr = newArr.concat(first);
+newArr = newArr.concat(second);
+newArr.forEach(item => item = Number(item))
+
+const ctx = document.getElementById('myChart').getContext('2d');
+new Chart(ctx, {
     type: 'bar',
     data: {
         labels: arr,
@@ -61,7 +76,7 @@ var myChart = new Chart(ctx, {
         },
         title: {
             display: true,
-            text: 'Life Expectancy by Country',
+            text: 'Metrology',
             position: 'top',
             fontSize: 16,
             padding: 20
@@ -75,3 +90,9 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+
+
+console.log('AVG:', getAVG(arr));
+
+export default arr;
