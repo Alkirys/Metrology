@@ -31,4 +31,8 @@ const arr = [
     9.0054
 ]
 
-console.log(arr.length)
+const getAVG = (mass) => {
+    return mass.reduce((a,b) => {
+        return a+b;
+    })/mass.length;
+}
