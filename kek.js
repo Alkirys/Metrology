@@ -36,3 +36,42 @@ const getAVG = (mass) => {
         return a+b;
     })/mass.length;
 }
+
+console.log(document.getElementById('myChart'))
+
+// Vertical bar chart
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: arr,
+        datasets: [{
+            label: 'Metrology',
+            data: arr,
+            backgroundColor:  'rgba(216, 27, 96, 0.6)',
+            borderColor: [
+                'rgba(216, 27, 96, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: 'Life Expectancy by Country',
+            position: 'top',
+            fontSize: 16,
+            padding: 20
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 9
+                }
+            }]
+        }
+    }
+});
